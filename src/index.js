@@ -9,12 +9,10 @@ submitButton.addEventListener("click", function () {
       document.getElementById("input-username").value ===
       row2.cells.item(0).innerHTML
     ) {
-      row2.cells.item(1).innerHTML = document.getElementById(
-        "input-email"
-      ).value;
-      row2.cells.item(2).innerHTML = document.getElementById(
-        "input-address"
-      ).value;
+      row2.cells.item(1).innerHTML =
+        document.getElementById("input-email").value;
+      row2.cells.item(2).innerHTML =
+        document.getElementById("input-address").value;
       let value = "";
       if (document.getElementById("input-admin").checked === true) {
         value = "X";
@@ -22,6 +20,22 @@ submitButton.addEventListener("click", function () {
         value = "-";
       }
       row2.cells.item(3).innerHTML = value;
+
+      let imgsrc = document.getElementById("input-image").files[0];
+      if (typeof imgsrc !== "undefined") {
+        urli = URL.createObjectURL(imgsrc);
+        var img = document.createElement("img");
+        img.src = urli;
+        img.width = 64;
+        img.height = 64;
+        var e = this.firstElementChild;
+        row2.deleteCell(4);
+        row2.insertCell(4);
+        row2.cells.item(4).appendChild(img);
+      } else {
+        console.log("undefined?");
+        console.log(imgsrc);
+      }
       status = 1;
     }
   }
@@ -34,16 +48,27 @@ submitButton.addEventListener("click", function () {
     let email = row.insertCell(1);
     let address = row.insertCell(2);
     let admin = row.insertCell(3);
+    let picture = row.insertCell(4);
     // Data to the new elements from the form
     username.innerHTML = document.getElementById("input-username").value;
     email.innerHTML = document.getElementById("input-email").value;
     address.innerHTML = document.getElementById("input-address").value;
-    admin.innerHTML = document.getElementById("input-admin").value;
-
     if (document.getElementById("input-admin").checked === true) {
       admin.innerHTML = "X";
     } else {
       admin.innerHTML = "-";
+    }
+    let imgsrc = document.getElementById("input-image").files[0];
+    if (typeof imgsrc !== "undefined") {
+      urli = URL.createObjectURL(imgsrc);
+      var img = document.createElement("img");
+      img.src = urli;
+      img.width = 64;
+      img.height = 64;
+      picture.appendChild(img);
+    } else {
+      console.log("undefined?");
+      console.log(imgsrc);
     }
   }
 });
