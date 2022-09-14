@@ -125,7 +125,10 @@ submitButton.addEventListener("click", function () {
   var status = 0;
 
   for (var _i = 0, row2; row2 = table.rows[_i]; _i++) {
+    console.log(_i);
+
     if (document.getElementById("input-username").value === row2.cells.item(0).innerHTML) {
+      console.log("spotattu");
       row2.cells.item(1).innerHTML = document.getElementById("input-email").value;
       row2.cells.item(2).innerHTML = document.getElementById("input-address").value;
       var value = "";
@@ -137,6 +140,7 @@ submitButton.addEventListener("click", function () {
       }
 
       row2.cells.item(3).innerHTML = value;
+      console.log(document.getElementById("input-admin").checked);
       status = 1;
     }
   }
@@ -160,6 +164,8 @@ submitButton.addEventListener("click", function () {
     } else {
       admin.innerHTML = "-";
     }
+
+    console.log(document.getElementById("input-admin").checked);
   }
 });
 emptyTableButton.addEventListener("click", function () {

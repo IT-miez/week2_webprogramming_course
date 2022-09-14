@@ -5,10 +5,12 @@ submitButton.addEventListener("click", function () {
   var table = document.getElementById("data-table");
   var status = 0;
   for (let i = 0, row2; (row2 = table.rows[i]); i++) {
+    console.log(i);
     if (
       document.getElementById("input-username").value ===
       row2.cells.item(0).innerHTML
     ) {
+      console.log("spotattu");
       row2.cells.item(1).innerHTML = document.getElementById(
         "input-email"
       ).value;
@@ -22,6 +24,7 @@ submitButton.addEventListener("click", function () {
         value = "-";
       }
       row2.cells.item(3).innerHTML = value;
+      console.log(document.getElementById("input-admin").checked);
       status = 1;
     }
   }
@@ -45,6 +48,7 @@ submitButton.addEventListener("click", function () {
     } else {
       admin.innerHTML = "-";
     }
+    console.log(document.getElementById("input-admin").checked);
   }
 });
 
